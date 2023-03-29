@@ -1,10 +1,11 @@
 import { useState, useCallback} from "react";
 import FancyButton from "../../Components/Button/Button";
 import NumberInput from "../../Components/Input/Input";
-import {generateSquare } from "../../utils";
+import { Area } from "../../types";
+import {generateSquare, findBiggestArea } from "../../utils";
 
 interface SquareFormProps {
-    onSubmit : (result : string[][]) => void;
+    onSubmit : (square : string[][], result : Area) => void;
     onClear : () => void;
 }
 
@@ -30,12 +31,15 @@ const SquareForm: React.FC<SquareFormProps> = ({ onSubmit, onClear }) => {
   }, []);
 
   const handleSubmit = useCallback(
-    (e : React.FormEvent<HTMLFormElement> |  React.MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-      onSubmit(generateSquare(width, height, colorNumber));
-    },
-    [onSubmit, width, height, colorNumber]
-  );
+    (e : React.FormEvent<HTMLFormElement> |  React.MouseEvent<HTMLButtonElement>)  =>{
+            e.preventDefault();
+            const square = generateSquare(width, height, colorNumber);
+            const result = findBiggestArea(square);
+            onSubmit(square, result);
+        },[width, height, colorNumber, onSubmit]
+    )
+
+
 
   const handleClear = useCallback(() => {
     setWidth(0);
