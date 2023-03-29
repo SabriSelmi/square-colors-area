@@ -39,11 +39,12 @@ const Square : React.FC<SquareProps> = ({square, cells, widthCalculator}) => {
         ))
       }, [square, cells, widthCalculator]);
       return (
+        square ?
         <div className="d-flex justify-content-center mrg-t-15 mrg-b-15">
             <div className="mrg-auto mrg-t-15" style={{maxWidth : "100%"}}>
                 {renderSquare}
             </div>
-        </div>
+        </div> : null
     )
 }
 
