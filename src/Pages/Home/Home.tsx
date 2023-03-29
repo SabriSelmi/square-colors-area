@@ -10,19 +10,21 @@ const HomePage: React.FC = ()=>{
     const [widthWindow] = useWindowSize();
 
    
-    
+    // generate the square and calculate the biggest area
     const handleSubmit = useCallback(
         (square : string[][], result : Area)  =>{
         setSquare(square);
         setResult(result);
     },[])
 
+    // clear state
     const handleClear = useCallback(
         () => {
                 setSquare([[]]);
                 setResult({size : 0, color:"", cells : [[]]});    
             },[]
         )
+    // calculate the width of the cell to be displayed
     const widthCalculator = useCallback(
         (row :string[])=> (
             widthWindow / row.length > 25 ? 25 : widthWindow / row.length
@@ -33,14 +35,14 @@ const HomePage: React.FC = ()=>{
 
     return (
         <Fragment>
-        <SquareForm onSubmit={handleSubmit} onClear={handleClear} />
-        <div className="d-flex justify-content-center mrg-t-15 mrg-b-15">
-                { result.size !==0 && <h2>The biggest area contains {result.size} cells with 
-                <div className="cell mrg-l-15 mrg-r-15" style={{background : result.color as string ,display: "inline-block"}}/>{result.color} color
-                </h2> }
-        </div>
-        <Square square={square} cells={result.cells} widthCalculator={widthCalculator}/>            
-    </Fragment>
+            <SquareForm onSubmit={handleSubmit} onClear={handleClear} />
+            <div className="d-flex justify-content-center mrg-t-15 mrg-b-15">
+                    { result.size !==0 && <h2>The biggest area contains {result.size} cells with 
+                    <div className="cell mrg-l-15 mrg-r-15" style={{background : result.color as string ,display: "inline-block"}}/>{result.color} color
+                    </h2> }
+            </div>
+            <Square square={square} cells={result.cells} widthCalculator={widthCalculator}/>            
+        </Fragment>
     )
 }
 

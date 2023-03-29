@@ -1,5 +1,7 @@
 import { useLayoutEffect, useState } from 'react';
 
+// A custom hook to get the window size
+
 export function useWindowSize() {
   const [size, setSize] = useState([0, 0]);
   useLayoutEffect(() => {

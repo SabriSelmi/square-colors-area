@@ -11,7 +11,7 @@ interface NumberInputProps {
 const NumberInput: React.FC<NumberInputProps> = ({ value, onChange, label, placeholder, id }) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value.replace(/[^\d.-]/g, ""); // remove non-numeric characters
-    onChange(id, parseFloat(newValue));
+    onChange(id, parseFloat(newValue)); // pass the values to the parent component
   };
 
   return (

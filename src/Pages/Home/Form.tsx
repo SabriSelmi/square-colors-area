@@ -33,8 +33,11 @@ const SquareForm: React.FC<SquareFormProps> = ({ onSubmit, onClear }) => {
   const handleSubmit = useCallback(
     (e : React.FormEvent<HTMLFormElement> |  React.MouseEvent<HTMLButtonElement>)  =>{
             e.preventDefault();
+            // generate the square with the given parameters
             const square = generateSquare(width, height, colorNumber);
+            // get the result of the biggest area
             const result = findBiggestArea(square);
+            // pass the values to the parent component
             onSubmit(square, result);
         },[width, height, colorNumber, onSubmit]
     )
@@ -42,9 +45,11 @@ const SquareForm: React.FC<SquareFormProps> = ({ onSubmit, onClear }) => {
 
 
   const handleClear = useCallback(() => {
+    // clear all inputs
     setWidth(0);
     setHeight(0);
     setColorNumber(0);
+    // call the clear function from the parent component
     onClear();
   }, [onClear]);
 
