@@ -1,0 +1,35 @@
+.number-input {
+    width: 200px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .number-input:focus {
+    outline: none;
+    box-shadow: 0 0 5px #66afe9;
+    border-color: #66afe9;
+  }
+
+.label {
+    display: block;
+    font-size: .9rem;
+    font-weight: bold;
+    margin-bottom: .3rem;
+    min-width: 175px;
+}
+
+input::placeholder {
+    font-size: 0.9rem;
+  }
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+  
